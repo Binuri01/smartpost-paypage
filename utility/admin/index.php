@@ -27,27 +27,14 @@ $name = $img = $description = "";
   
       <form id="payment-form" name = "payment-form" onsubmit="return validate()" method="post" action = "insert.php">
 
-        <!--<input class="imgupload" id="img" type='file' accept="image/png, image/jpg, image/tiff, image/jpeg " name="img" required="required"><br><br>-->
-          <div class="upload">
-            <h3>Upload Image</h3>
-            <div class="drag-area">
-                <div class="icon">
-                    <i class="fas fa-images"></i>
-                </div>
-                <span class="header">Drag & Drop</span>
-                <span class="header">or <span class="button">browse</span></span>
-                <input id="img" name="img" type="file" hidden>
-                <span class="support">Supports: JPEG, JPG, PNG</span>
-            </div>
-          </div>
-          <br>
-
           <input type="text" id="name" name="name" class="form-control mb-3 StripeElement StripeElement--empty" placeholder="Name Of The Biller" value="<?php echo $name;?>" required="required"><br>
+
+          <input class="imgupload" id="img" type='file' accept="image/png, image/jpg, image/tiff, image/jpeg " name="img" required="required"><br><br>
           
-          <input type="radio" id="type" name="type" value="Electricity Bill">Electricity Bill
+          <!--<input type="radio" id="type" name="type" value="Electricity Bill">Electricity Bill
           <input type="radio" id="type" name="type" value="Water Bill">Water Bill
           <input type="radio" id="type" name="type" value="Telephone Bill">Telephone Bill
-          <input type="radio" id="type" name="type" value="Other">Other<br><br>
+          <input type="radio" id="type" name="type" value="Other">Other<br><br>-->
 
           
           <textarea style="height:150px" id="description" name="description" class="form-control mb-3 StripeElement StripeElement--empty" placeholder="Add Description (Optional)" value="<?php echo $description;?>" required="required"></textarea><br>

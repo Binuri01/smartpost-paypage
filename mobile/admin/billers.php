@@ -15,7 +15,7 @@
             <?php
                 require_once('insert.php');
 
-                $query = "select * from mobile";
+                $query = "select * from mobile where status=1";
                 $run = mysqli_query($conn, $query);
                 $check = mysqli_num_rows($run) > 0;
 
@@ -35,7 +35,7 @@
                                 <div class="rmv-btn">
                                     <form action="deleteBiller.php" method="post" style="border:none; box-shadow: none">
                                         <input type="hidden" name="id" value="<?php echo $row ['id']?>">
-                                            <span><input type="submit" name="delete" class="card-delete" value="Remove"></span>
+                                            <span><input type="submit" name="delete" class="card-delete" value="Archive"></span>
                                     </form>
                                 </div>                  
                             </div></center>                         

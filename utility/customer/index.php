@@ -26,7 +26,7 @@
                     <?php
                     require_once('../admin/insert.php');
 
-                    $query = "select * from utilitybills";
+                    $query = "select * from utilitybills WHERE status=1";
                     $run = mysqli_query($conn, $query);
                     $check = mysqli_num_rows($run) > 0;
 
@@ -40,7 +40,7 @@
                               <img src = "../admin/assets/<?php echo $row['img'];?>" class="card-img">
                                 <div class="card-content">
                                   <a href="utility.php" style="text-decoration:none"><h2><?php echo $row['name']; ?></h2>
-                                  <input type="hidden" name="type" value="<?php echo $row ['type']?>">     
+                                       
                                   <?php echo $row['description']; ?></a>
                                 </div>
                               </center>

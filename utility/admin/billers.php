@@ -30,7 +30,7 @@
                             <div class="card-contemt">
                                 <a href="#" style="text-decoration:none;"><h3><?php echo $row['name']; ?></h3>
                                 <p class="card-text"><?php echo $row['description']; ?></p></a>
-                                <input type="hidden" name="type" value="<?php echo $row ['type']?>">
+                                
                                             
                                 <div class=rmv-btn>
                                     <form action="deleteBiller.php" method="post" style="border:none; box-shadow: none">

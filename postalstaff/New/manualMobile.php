@@ -6,18 +6,20 @@
     $conn=mysqli_connect($host,$Hname,$Hpwd,$dbname);
 
     if(mysqli_connect($host,$Hname,$Hpwd,$dbname)){
-            if(!empty($_POST['name']) && !empty($_POST['img']) && !empty($_POST['description'])){
+            if(!empty($_POST['name']) && !empty($_POST['phoneNo']) && !empty($_POST['amount']) && !empty($_POST['method']) && !empty($_POST['refNo'])){
                 $name = $_POST['name'];
-                $img = $_POST['img'];
-                $description = $_POST['description'];
+                $phoneNo = $_POST['phoneNo'];
+                $amount = $_POST['amount'];
+                $method = $_POST['method'];
+                $refNo = $_POST['refNo'];
     
-                $query = "INSERT into utilityBills(name, img, description,status) values('$name', '$img', '$description', 1)";
+                $query = "INSERT into manual_mobilebill(name, phoneNo, amount, method, refNo) values('$name', '$phoneNo', '$amount', '$method', $refNo)";
     
                 $run = mysqli_query($conn, $query) or die(mysqli_error());
     
                 if($run){
                     
-                    header("location:billers.php");
+                    header("location:index.php");
                 }else{
                     echo "Form not submitted";
                 }

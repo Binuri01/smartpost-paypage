@@ -26,7 +26,7 @@
                     <?php
                     require_once('../admin/insert.php');
 
-                    $query = "select * from mobile";
+                    $query = "select * from mobile WHERE status = 1";
                     $run = mysqli_query($conn, $query);
                     $check = mysqli_num_rows($run) > 0;
 

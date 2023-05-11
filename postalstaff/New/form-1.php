@@ -16,7 +16,7 @@
 </head>
 <body>
 <div class="container">
-    <form action="#" class="form" id="form-1">
+    <form action="manualMobile.php" method="POST" class="form" id="form-1">
         <h1 class="text-center">Manual Payment Form</h1>
         
         <!-- Progress bar -->
@@ -46,13 +46,13 @@
                     }
                     ?>
 
-                    <div class="card" onclick="selectCard(this)">
+                    <div class="card" onclick="selectCard('<?php echo $row['name']; ?>')">
                         <center>
-                            <div class="card-content">
+                          <div class="card-content">
                                 <img src="../../mobile/admin/assets/<?php echo $row['img']; ?>" class="card-img">
                                 <!--<a href="utility.php" style="text-decoration:none"><h2><?php echo $row['name']; ?></h2>-->
                                 <h2 hidden><?php echo $row['name']; ?></h2>
-                            </div>
+                          </div>
                         </center>
                     </div>
 
