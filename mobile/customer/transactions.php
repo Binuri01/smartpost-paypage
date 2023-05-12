@@ -35,7 +35,6 @@
                     <th>Transaction ID</th>
                     <th>Customer</th>
                     <th>Product</th>
-                    <th>Amount</th>
                     <th>Date</th>
                 </tr>
             </thead>
@@ -45,8 +44,6 @@
                         <td><?php echo $t->id; ?></td>
                         <td><?php echo $t->customer_id; ?></td>
                         <td><?php echo $t->product; ?></td>
-                        <td><?php echo sprintf('%.2f',$t->amount/100); ?>
-                        <?php echo strtoupper($t->currency); ?></td>
                         <td><?php echo $t->created_at; ?></td>
                         </td>
                     </tr>

@@ -51,8 +51,8 @@
 
 
     <!--Edit Modal-->
-    <div class="modal-bg editmodal" id="editmodal">
-        <div class="modal modal-dialog" role="document">
+    <div class="editmodal" id="editmodal">
+        <div class="modal modal-dialog" role="document1">
             <!--<span class="modal-close">X</span>-->
 
                 <div class="modal-header">
@@ -70,7 +70,7 @@
                         <div class="form-group">
                             <label> Name Of the Examination</label>
                             <input type="text" name="ename" id="ename" class="form-control"
-                                placeholder="Enter Fee Acceptance Duration">
+                                placeholder="Enter Examination Name">
                         </div>
 
                         <div class="form-group">
@@ -92,7 +92,6 @@
                         </div>
                     </form>
                 </div>
-
         </div>
     </div>
 
@@ -152,7 +151,7 @@
                             <?php if ($row = mysqli_fetch_assoc($query_run)) { ?>
                                 <div class="form-group">
                                     <label> Name Of the Examination</label>
-                                    <input type="text" name="ename" id="ename" class="form-control" placeholder="Enter Fee Acceptance Duration" value="<?php echo $row['ename']; ?>">
+                                    <input type="text" name="ename" id="ename" class="form-control" placeholder="" value="<?php echo $row['ename']; ?>">
                                 </div>
                                 <div class="form-group">
                                     <label> Due Date To Accept Fee </label>
@@ -198,7 +197,7 @@
                                 <th scope="col"> Amount </th>
                                 <!--<th scope="col"> VIEW </th>-->
                                 <th scope="col"> EDIT </th>
-                                <th scope="col"> Archive </th>
+                                <th scope="col"> ARCHIVE </th>
                             </tr>
                         </thead>
                         <tbody>
@@ -219,8 +218,9 @@
                                 <td> <?php echo $row['amount']; ?> </td>
                                 
                                 <!--<td><button type="button" class="btn btn-info viewbtn modal-btn" data-toggle="modal" data-target="#viewbtn"> VIEW </button></td>-->
-                                <td><button type="button" class="btn btn-success editbtn modal-btn" data-toggle="modal" data-target="#editbtn"> EDIT </button></td>
-                                <td><button type="button" class="btn btn-danger deletebtn" data-toggle="modal" data-target="#deletebtn">  Archive </button></td>
+                                <td><button type="button" class="btn btn-success editbtn" data-toggle="modal" data-target="#editmodal"> EDIT </button></td>
+                                
+                                <td><button type="button" class="btn btn-danger deletebtn" data-toggle="modal" data-target="#deletemodal">  ARCHIVE </button></td>
                             </tr>
                             <?php } ?>
 
@@ -234,12 +234,41 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
     <script>
+
+        
         var modalBtn = document.querySelector('.modal-btn');
         var modalBg = document.querySelector('.modal-bg');
+        var editmodalBg = document.querySelector('.editmodal');
         var modalClose = document.querySelector('.modal-close');
         var modalCloseBtn = document.querySelector('.btn-secondary');
 
-        var editBtn = document.querySelector('.editbtn');
+        var editBtn = document.querySelectorAll('.editbtn');
+        editBtn.forEach(button => {
+            button.addEventListener('click', function() {
+                // Get the modal
+                
+                const modal = document.getElementById('editmodal');
+                console.log(modal);
+                // Get the <span> element that closes the modal
+                const closeBtn = document.querySelector('.modal-close');
+            
+                // When the user clicks on the button, open the modal
+                modal.style.display = "block"
+                modal.classList.add('bg-active');
+            
+                // When the user clicks on <span> (x), close the modal
+                closeBtn.addEventListener('click', function() {
+                    modal.style.display = "none";
+                });
+            
+                // When the user clicks anywhere outside of the modal, close it
+                window.addEventListener('click', function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+                });
+            });
+        });
 
         modalBtn.addEventListener('click', function(){
             modalBg.classList.add('bg-active');
@@ -253,9 +282,10 @@
             modalBg.classList.remove('bg-active');
         });
 
-        editBtn.addEventListener('click', function(){
-            modalBg.classList.add('bg-active');
-        });
+        /* editBtn.addEventListener('click', function(){
+            console.log("hiiii");
+            editmodalBg.classList.add('bg-active');
+        }); */
     </script>
 
     <script>
@@ -311,13 +341,17 @@
 </script>
 
 <script>
-    $(document).ready(function () {
+    $(document1).ready(function () {
 
         $('.editbtn').on('click', function () {
 
-            /*$('#editmodal').modal('show');*/
-            $('#editmodal').css('display', 'block');
-            /*$('#editmodal').show();*/
+            var modal = document.getElementById("editmodal");
+            var btn = document.getElementById("openeditModal");
+
+
+            /* $('#editmodal').modal('show'); */
+            /* $('#editmodal').css('display', 'block'); */
+            $('#editmodal').show();
 
             $tr = $(this).closest('tr');
 

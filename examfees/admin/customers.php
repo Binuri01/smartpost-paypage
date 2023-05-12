@@ -19,6 +19,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
     <title>View Customers</title>
 </head>
 <body>
@@ -29,8 +30,8 @@
         </div>
         <hr>
         <h2>Customers</h2>
-        <center><table class="table table-striped">
-            <thead>
+        <center><table class="table table-striped" id="myTable">
+            <thead style="background-color:red; color:white">
                 <tr>
                     <th>Customer ID</th>
                     <th>Name</th>
@@ -54,6 +55,18 @@
         <br>
         <p><a href="index.php">Pay Page</p>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 
+    <script>
+	$(document).ready(function() {
+		let table = $('#myTable').DataTable({
+			"searching": true,
+			"language": {
+				"searchPlaceholder": "Search table data"
+			}
+		});
+	});
+</script>
 </body>
 </html>

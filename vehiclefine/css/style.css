@@ -29,7 +29,7 @@
     font-size: 1rem;
     font-weight: bold;
     color: #fff;
-    background-color: #007bff;
+    background-color: #EE1C25;
     border: none;
     border-radius: 0.25rem;
     cursor: pointer;
@@ -38,7 +38,7 @@
 }
   
 #payment-form button:hover {
-    background-color: #0069d9; 
+    background-color: #EE1C25; 
 }
 
 .container {
@@ -71,7 +71,7 @@
 }
   
 .form-control:focus {
-    border-color: #80bdff;
+    border-color: #EE1C25;
     outline: 0;
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
@@ -151,13 +151,13 @@
     border-radius: 0.25rem;
     transition: all 0.2s ease-in-out;
     color: #fff;
-    background-color: #007bff;
-    border-color: #007bff;
+    background-color: #EE1C25;
+    border-color: #EE1C25;
 }
 .btn-primary {
     color: #fff;
-    background-color: #007bff;
-    border-color: #007bff;
+    background-color: #EE1C25;
+    border-color: #EE1C25;
 }
 
 .btn-secondary {

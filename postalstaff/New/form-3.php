@@ -17,7 +17,7 @@
 </head>
 <body>
 <div class="container">
-    <form action="#" class="form" id="form-1">
+    <form action="manualExam.php" class="form" id="form-3" method="post">
         <h1 class="text-center">Manual Payment Form</h1>
         
         <!-- Progress bar -->
@@ -31,7 +31,7 @@
         </div>
 
         <!-- Steps -->
-        <!--step 1 - Mobile Bill Payments-->
+        <!--step 1 - Exam fee Payments-->
         <div class="form-step form-step-active" id="step-1">
           <!--<div class="input-group">
             <label for="username">Username</label>
@@ -59,9 +59,9 @@
                     <center>
                       <div class="card-content">
                         <!--<a href="utility.php" style="text-decoration:none"><h2><?php echo $row['name']; ?></h2>-->
-                        <h2><?php echo $row['ename']; ?></h2>
-                        Deadline:<h3 style="color:red;"><?php echo $row['duration']; ?></h3>
-                        <h2>Rs. <?php echo $row['amount']; ?></h2></a>     
+                        <h2 style="font-size:10px"><?php echo $row['ename']; ?></h2>
+                        <h3 style="font-size:8px">Deadline:<h3 style="color:red;"><?php echo $row['duration']; ?></h3>
+                        <h3 style="font-size:8px">Rs. <?php echo $row['amount']; ?></h3></a>     
 
                       </div>
                     </center>
@@ -120,7 +120,7 @@
         <div class="form-step step-3">
           <div class="input-group">
             <label>
-              <input type="checkbox" name="newsletter" value="subscribe"> Cash Collected
+              <input type="checkbox" name="cashCollected" value="cashCollected"> Cash Collected
             </label>
           </div>
 

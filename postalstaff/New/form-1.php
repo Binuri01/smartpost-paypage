@@ -34,7 +34,7 @@
         <div class="form-step form-step-active" id="step-1">
           
         <?php
-            $query = "SELECT * FROM mobile";
+            $query = "SELECT * FROM mobile WHERE status=1";
             $run = mysqli_query($conn, $query);
             $check = mysqli_num_rows($run) > 0;
 
@@ -46,12 +46,13 @@
                     }
                     ?>
 
-                    <div class="card" onclick="selectCard('<?php echo $row['name']; ?>')">
+                    <div class="card" onclick="selectCard(this)">
                         <center>
                           <div class="card-content">
                                 <img src="../../mobile/admin/assets/<?php echo $row['img']; ?>" class="card-img">
                                 <!--<a href="utility.php" style="text-decoration:none"><h2><?php echo $row['name']; ?></h2>-->
-                                <h2 hidden><?php echo $row['name']; ?></h2>
+                                <!--<h2 hidden><?php echo $row['name']; ?></h2>-->
+                                <input type="hidden" value="<?php echo $row['name']; ?>">
                           </div>
                         </center>
                     </div>
@@ -82,12 +83,12 @@
          
         <div class="input-group">
             <label for="phoneNo">Phone Number</label>
-            <input type="number" name="phoneNo" id="phoneNo" />
+            <input type="number" name="phoneNo" id="phoneNo" required />
         </div>
 
           <div class="input-group">
             <label for="amount">Amount</label>
-            <input type="number" name="amount" id="amount" />
+            <input type="number" name="amount" id="amount" required/>
           </div>
 
           <div class="input-group">
@@ -109,7 +110,7 @@
         <div class="form-step step-3">
           <div class="input-group">
             <label>
-              <input type="checkbox" name="newsletter" value="subscribe"> Cash Collected
+              <input type="checkbox" name="cashCollected" value="cashCollected" required> Cash Collected
             </label>
           </div>
 
@@ -123,7 +124,7 @@
         <div class="form-step step-5">
           <div class="input-group">
             <label for="refNo">refNo</label>
-            <input type="text" name="refNo" id="refNo" />
+            <input type="text" name="refNo" id="refNo" required/>
           </div>
 
           <div class="btns-group">
@@ -146,7 +147,7 @@
           </div>
 
           <div class="btns-group">
-            <a href="#" class="btn download" id="download">Download</a>
+            <a href="pdf_gen.php" class="btn download" id="download">Download</a>
             <input type="submit" value="Submit" class="btn" id="myForm"/>
           </div>
         </div>
@@ -156,6 +157,21 @@
 
 
       <script src="script.js" defer></script>
+      <script>
+          var selectedCards = [];
+
+          function selectCard(card) {
+          // Remove the 'selected' class from all cards
+          var cards = document.getElementsByClassName('card');
+          for (var i = 0; i < cards.length; i++) {
+            cards[i].classList.remove('selected');
+          }
+
+          // Add the 'selected' class to the clicked card
+          card.classList.add('selected');
+        }
+      </script>
+
     <script>
         window.onload = function() {
             // Define variables for each step
@@ -242,7 +258,9 @@
         });
         };
         
-
     </script>
+
+
+    
 </body>
 </html>

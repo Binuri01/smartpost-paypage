@@ -11,7 +11,6 @@
 
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,7 +31,7 @@
         <hr>
         <h2>Customers</h2>
         <center><table class="table table-striped" id="myTable">
-            <thead style="background-color: red">
+            <thead style="background-color: red; color:white">
                 <tr>
                     <th>Customer ID</th>
                     <th>Name</th>

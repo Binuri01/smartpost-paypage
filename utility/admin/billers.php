@@ -11,10 +11,11 @@
 
 <div class="transactions">
     <center><h2 class="header">Biller Information</h2></center>
+    
             <?php
                 require_once('insert.php');
 
-                $query = "select * from utilityBills";
+                $query = "select * from utilityBills WHERE status=1";
                 $run = mysqli_query($conn, $query);
                 $check = mysqli_num_rows($run) > 0;
 
@@ -35,7 +36,7 @@
                                 <div class=rmv-btn>
                                     <form action="deleteBiller.php" method="post" style="border:none; box-shadow: none">
                                         <input type="hidden" name="id" value="<?php echo $row ['id']?>">
-                                            <span><input type="submit" name="delete" class="card-delete" value="Remove"></span>
+                                            <span><input type="submit" name="delete" class="card-delete" value="Archive"></span>
                                     </form>
                                 </div>                  
                             </div></center>                        
@@ -51,7 +52,9 @@
                     }
 
                     ?>
-        <a href='index.php' style="text-decoration:none;"><button class="add">+ Add Biller</button><br>    
+                    
+        <a href='index.php' style="text-decoration:none;"><button class="add">+ Add Biller</button>   
+        <a href="archive.php" style="text-decoration:none;"><button>Archived Billers</a>
 
 </div>
 </body>

@@ -9,7 +9,7 @@
 </head>
 <body>
 <div class="container">
-    <form action="#" class="form" id="form-1">
+    <form action="manualVehiclefine.php" method="post" class="form" id="form-1">
         <h1 class="text-center">Manual Payment Form</h1>
         
         <!-- Progress bar -->
@@ -66,11 +66,11 @@
           </div>
         </div>
 
-        <!--step 3 - Mobile bill payments - cash-->
+        <!--step 3  - cash-->
         <div class="form-step step-3">
           <div class="input-group">
             <label>
-              <input type="checkbox" name="newsletter" value="subscribe"> Cash Collected
+              <input type="checkbox" name="cashCollected" value="cashCollected"> Cash Collected
             </label>
           </div>
 
@@ -97,7 +97,7 @@
           </div>
         </div>
 
-        <!--step 5 - Mobile bill payments - card-->
+        <!--step 5- card-->
         <div class="form-step step-5">
           <div class="input-group">
             <label for="refNo">refNo</label>

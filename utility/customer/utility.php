@@ -2,10 +2,6 @@
 require('../../index.php');
 require_once  ("../admin/insert.php");
 
-// define variables and set to empty values
-$nameErr = $emailErr = $accNoErr = $amountErr = "";
-$name = $email = $accNo = $amount = "";
-
 ?>
 
 
@@ -28,8 +24,8 @@ $name = $email = $accNo = $amount = "";
 
         <div id="card-element">
 
-          <input type="text" name="accNo" class="form-control mb-3 StripeElement StripeElement--empty" placeholder="Enter Account Number" value="<?php echo $accNo;?>" required="required"><br>
-          <span class="error"> <?php echo $accNoErr;?></span>
+          <input type="text" name="accNo" value="" class="form-control mb-3 StripeElement StripeElement--empty" placeholder="Enter Account Number"  required="required"><br>
+          
     
 
           <?php
@@ -43,7 +39,7 @@ $name = $email = $accNo = $amount = "";
               while($row = mysqli_fetch_assoc($run)){
           ?>
 
-                <input type="hidden" name="type" value="<?php echo $row ['type']?>">  
+                <input type="hidden" name="name" value="<?php echo $row ['name']?>">  
 
                 <?php                 
               }
