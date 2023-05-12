@@ -30,7 +30,6 @@
 					<td><?php echo $fetch['id']?></td>
 					<td><?php echo $fetch['ename']?></td>
 					<td><?php echo $fetch['duration']?></td>
-					<!--<td><?php echo $fetch['date_archived']?></td>-->
 					<td><?php echo $fetch['amount']?></td>
 					<td hidden><?php echo $fetch['status']?></td>
 				</tr>

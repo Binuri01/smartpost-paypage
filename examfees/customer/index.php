@@ -44,7 +44,7 @@
                             ?>
 
                                 <div class="row"> 
-                                    <div class="card" data-step="<?php echo $cardIndex; ?>">
+                                    <div class="content-card" data-step="<?php echo $cardIndex; ?>">
                                         <center><div class="card-content">
                                             <a href="checkout.php" style="text-decoration:none"><h2><?php echo $row['ename']; ?></h2>
                                             Deadline:<h3 style="color:red;"><?php echo $row['duration']; ?></h3>

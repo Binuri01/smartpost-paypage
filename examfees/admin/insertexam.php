@@ -1,7 +1,7 @@
 <?php
 
 $connection = mysqli_connect("localhost","root","");
-$db = mysqli_select_db($connection, 'payments');
+$db = mysqli_select_db($connection, 'paypage');
 
 if(isset($_POST['insertdata']))
 {

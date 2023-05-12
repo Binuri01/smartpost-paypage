@@ -67,24 +67,6 @@ function stripeTokenHandler(token){
     form.submit();
 }
 
-/*tooltip modal*/
-const tooltips = document.querySelectorAll('.tooltip');
-tooltips.forEach(tooltip => {
-  tooltip.setAttribute('data-title', tooltip.getAttribute('title'));
-  tooltip.removeAttribute('title');
-});
-
-
-/*onclick modal*/
-$(document).ready(function(){
-    $('[data-toggle="modal"]').click(function(){
-      var target_modal = $(this).attr('data-target');
-      $(target_modal).modal('show');
-    });
-  });
-
-
-  
   function validate() {
     var name = document.forms["payment-form"]["ename"].value;
     if(name==""){
@@ -137,3 +119,4 @@ $(document).ready(function(){
     }
   }
   
+ 

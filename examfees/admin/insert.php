@@ -2,7 +2,7 @@
     $host="localhost";
     $Hname="root";
     $Hpwd="";
-    $dbname =  "payments";
+    $dbname =  "paypage";
     $conn=mysqli_connect($host,$Hname,$Hpwd,$dbname);
 
     if(mysqli_connect($host,$Hname,$Hpwd,$dbname)){

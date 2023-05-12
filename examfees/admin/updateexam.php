@@ -1,6 +1,6 @@
 <?php
 $connection = mysqli_connect("localhost","root","");
-$db = mysqli_select_db($connection, 'payments');
+$db = mysqli_select_db($connection, 'paypage');
 
     if(isset($_POST['updatedata']))
     {   
@@ -10,7 +10,7 @@ $db = mysqli_select_db($connection, 'payments');
         $duration = $_POST['duration'];
         $amount = $_POST['amount'];
 
-        $query = "UPDATE exams SET ename='$ename', duration='$duration', amount=' $amount' WHERE id='$id'  ";
+        $query = "UPDATE exams SET ename='$ename', duration='$duration', amount=' $amount' WHERE id='$id' ";
         $query_run = mysqli_query($connection, $query);
 
         if($query_run)

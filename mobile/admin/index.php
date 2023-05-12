@@ -23,7 +23,7 @@ $name = $img = $description = "";
     
       <center><h2 class="header">Add Biller Details</h2></center>
 
-      <a href = "billers.php" style="text-decoration:none; float: right;"><button class="view-billers">View All Billers</button></a><br>
+      <a href = "billers.php" style="text-decoration:none; float: right;"><button class="view-billers">View All Billers</button></a>
       <a href="archive.php" style="text-decoration:none; float: right;"><button class="archive-billers">Archived Biller</button></a>
 
       <form id="payment-form" name = "payment-form" onsubmit="return validate()" method="post" action = "insert.php">
@@ -31,7 +31,7 @@ $name = $img = $description = "";
         <input type="text" id="name" name="name" class="form-control mb-3 StripeElement StripeElement--empty" placeholder="Name of the Biller" value="<?php echo $name;?>" required="required"><br>
         <span class="error"> <?php echo $nameErr;?></span>
 
-        <input class="imgupload" id="file" type='file' accept="image/png, image/jpg, image/tiff, image/jpeg " name="file"  required="required"><br><br>
+        <input class="imgupload" id="img" type='file' accept="image/png, image/jpg, image/tiff, image/jpeg " name="img"  required="required"><br><br>
         
         <textarea style="height:150px" id="description" name="description" class="form-control mb-3 StripeElement StripeElement--empty" placeholder="Add description" value="<?php echo $description;?>"></textarea><br>
         <span class="error"> <?php echo $descriptionErr;?></span>

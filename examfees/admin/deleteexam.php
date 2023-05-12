@@ -2,7 +2,7 @@
     date_default_timezone_set("Etc/GMT+8");
 
     $connection = mysqli_connect("localhost","root","");
-    $db = mysqli_select_db($connection, 'payments');
+    $db = mysqli_select_db($connection, 'paypage');
 
     $query = mysqli_query($connection, "SELECT * FROM `exams`");
     $date = date("Y-m-d");
