@@ -18,6 +18,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
     <title>View Transactions</title>
 </head>
 <body>
@@ -28,7 +29,7 @@
         </div>
         <hr>
         <h2>Transactions</h2>
-        <center><table class="table table-striped">
+        <center><table class="table table-striped" id="myTable">
             <thead>
                 <tr>
                     <th>Transaction ID</th>
@@ -36,7 +37,6 @@
                     <th>Product</th>
                     <th>Amount</th>
                     <th>Date</th>
-                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -48,12 +48,7 @@
                         <td><?php echo sprintf('%.2f',$t->amount/100); ?>
                         <?php echo strtoupper($t->currency); ?></td>
                         <td><?php echo $t->created_at; ?></td>
-                        <td>
                         
-                        <div class="subscribe-section">
-                            <button class="modal-btn">Delete</button>  
-                            <button class="modal-btn">View</button>  
-                        </div>
 
                             
                         </td>
@@ -76,7 +71,20 @@
             <span class="modal-close">X</span>
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
     <script src="../js/charge.js"></script>
+
+    <script>
+	$(document).ready(function() {
+		let table = $('#myTable').DataTable({
+			"searching": true,
+			"language": {
+				"searchPlaceholder": "Search table data"
+			}
+		});
+	});
+</script>
 </body>
 </html>
 

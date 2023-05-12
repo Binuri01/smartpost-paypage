@@ -53,7 +53,7 @@
         //'id' => substr(md5(uniqid()), 0, 5), // random transaction ID
         //'id' => time() . rand(1000, 9999),
         'id' => str_pad(mt_rand(0, 99999), 5, '0', STR_PAD_LEFT),
-        'customer_id' => $charge->customer,
+        'customer_id' => str_pad(mt_rand(0, 99999), 5, '0', STR_PAD_LEFT),
         'product' => $charge->description,
         'amount' => $charge->amount,
         'currency' => $charge->currency,

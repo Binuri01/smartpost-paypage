@@ -47,8 +47,8 @@
 
     //Transaction data
     $transactionData = [ 
-        'id' => $charge->id,
-        'customer_id' => $charge->customer,
+        'id' => str_pad(mt_rand(0, 99999), 5, '0', STR_PAD_LEFT),
+        'customer_id' => str_pad(mt_rand(0, 99999), 5, '0', STR_PAD_LEFT),
         'product' => $charge->description,
         'amount' => $charge->amount,
         'currency' => $charge->currency,

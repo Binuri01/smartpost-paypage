@@ -173,6 +173,7 @@
         const step5NextBtn = document.getElementById('step5-next-btn');
 
         // Hide all steps except the first one
+        
         step2.style.display = "block";
         step3.style.display = "none";
         step4.style.display = "none";
