@@ -1,36 +1,52 @@
 <?php
-    class Transaction {
-        private $db;
+class Transaction {
+    private $db;
 
-        public function __construct(){
-            $this->db = new Database;
-        }
-
-        public function addTransaction($data){
-            //prepare query
-            $this->db->query('INSERT INTO transactions (id, customer_id, product, amount, currency, status) VALUES (:id, :customer_id, :product, :amount, :currency, :status)');
-
-            //Bind Values
-            $this->db->bind(':id', $data['id']);
-            $this->db->bind(':customer_id', $data['customer_id']);
-            $this->db->bind(':product', $data['product']);
-            $this->db->bind(':amount', $data['amount']);
-            $this->db->bind(':currency', $data['currency']);
-            $this->db->bind(':status', $data['status']);
-
-            // Execute
-            if($this->db->execute()){
-                return true;
-            } else {
-                return false;
-            }
-        }
-
-        public function getTransactions(){
-            $this->db->query('SELECT * FROM transactions ORDER BY created_at DESC');
-
-            $results = $this->db->resultset();
-
-            return $results;
+    public function __construct(){
+        $this->db = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+        if ($this->db->connect_error) {
+            die("Connection failed: " . $this->db->connect_error);
         }
     }
+
+    public function addTransaction($transactionData){
+        // Prepare Query
+        $query = "INSERT INTO online_mobiletrans (customer_id, amount, status) VALUES (?, ?, ?)";
+
+        // Prepare statement and bind parameters
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("isi", $transactionData['customer_id'], $transactionData['amount'], $transactionData['status']);
+
+        // Execute statement
+        $stmt->execute();
+
+        // Check for errors
+        if ($stmt->error) {
+            die("Error adding transaction: " . $stmt->error);
+        }
+
+        // Close statement
+        $stmt->close();
+    }
+
+    public function getTransactions(){
+        // Prepare Query
+        $query = "SELECT * FROM online_mobiletrans";
+
+        // Execute query
+        $result = $this->db->query($query);
+
+        // Fetch result as array of objects
+        $transactions = [];
+        while ($transaction = $result->fetch_object()) {
+            $transactions[] = $transaction;
+        }
+
+        // Close result
+        $result->close();
+
+        // Return transactions
+        return $transactions;
+    }
+}
+

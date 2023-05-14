@@ -1,5 +1,6 @@
 <?php
     require('../../index.php');
+    require_once  ("../admin/insert.php");
 ?>
 
 
@@ -16,35 +17,16 @@
 <body>
     <div class="container">
         <h2 class="my-4 text-center">Mobile Bill Payments</h2>
-        <form action="./charge.php" method="post" id="payment-form">
+        <form action="charge.php" method="post" id="payment-form">
+
+
         <div class="form-row">
-            <input type="text" name="name" class="form-control mb-3 StripeElement StripeElement--empty" placeholder="Full Name">
+        <input type="text" name="mobileNo" class="form-control mb-3 StripeElement StripeElement--empty" placeholder="Enter Mobile Number" required="required">
+        <input type="text" name="fname" class="form-control mb-3 StripeElement StripeElement--empty" placeholder="Full Name">
             <input type="email" name="email" class="form-control mb-3 StripeElement StripeElement--empty" placeholder="Email Address"> 
             <input type="number" name="amount" class="form-control mb-3 StripeElement StripeElement--empty" placeholder="Bill Amount"> 
 
-            <?php
-            require_once('../admin/insert.php');
-
-            $query = "select * from mobile";
-            $run = mysqli_query($conn, $query);
-            $check = mysqli_num_rows($run) > 0;
-
-            if($check){
-              while($row = mysqli_fetch_assoc($run)){
-          ?>
-
-                <input type="hidden" name="mobileNo" value="<?php echo $row ['mobileNo']?>">  
-
-                <?php                 
-              }
-            }
-            else{
-              echo "No Data Found";
-            }
-
-            ?>
-
-
+            <input id="name" type="hidden" name="name">
 
             <div id="card-element" class="form-control">
                 <!--a Stripe element will be inserted here-->
@@ -54,7 +36,7 @@
             <div id="card-errors" role="alert"></div>
         </div>
 
-        <button>Submit Payment</button>
+        <input type ="submit" name = "submit_payment" value = "Submit Payment">
     </form>
 
     <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery/3.2.1/jquery.min.js"></script>

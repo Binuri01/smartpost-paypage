@@ -16,7 +16,7 @@
 </head>
 <body>
 <div class="container">
-    <form action="manualUtility.php" method="POST" class="form" id="form-1">
+    <form action="manualUtility.php" class="form" id="form-3" method="post">
         <h1 class="text-center">Manual Payment Form</h1>
         
         <!-- Progress bar -->
@@ -30,11 +30,11 @@
         </div>
 
         <!-- Steps -->
-        <!--step 1 - Utility Bill Payments-->
+        <!--step 1 - Exam fee Payments-->
         <div class="form-step form-step-active" id="step-1">
-          
-        <?php
-          $query = "select * from utilitybills where status=1";
+
+          <?php
+          $query = "select * from utilitybills WHERE status = 1";
           $run = mysqli_query($conn, $query);
           $check = mysqli_num_rows($run) > 0;
 
@@ -45,14 +45,11 @@
                     echo '<div class="row">';
                 }
                 ?>
-                  <div class="card" onclick="selectCard(this)">
+                  <div class="card" onclick="selectCard(this)" data-name="<?php echo $row['name']?>">
                     <center>
                     <img src = "../../utility/admin/assets/<?php echo $row['img'];?>" class="card-img">
                       <div class="card-content">
-                        <!--<a href="utility.php" style="text-decoration:none"><h2><?php echo $row['name']; ?></h2>-->
                         <h2 hidden><?php echo $row['name']; ?></h2>
-                        <input type="hidden" name="type" value="<?php echo $row ['type']?>">     
-
                       </div>
                     </center>
                   </div>
@@ -71,29 +68,29 @@
             }
         ?>
 
+        <input id="name" type="hidden" name="name">
         <div class="">
             <a href="#" class="btn btn-next width-50 ml-auto" id="step1-next-btn">Next</a>
           </div>
         </div>
 
 
-        <!--step 2 - Mobile bill payments-->
+        <!--step 2 - Exam fee payments-->
         <div class="form-step step-2" id="step-2">
          
         <div class="input-group">
             <label for="accNo">Account Number</label>
-            <input type="number" name="accNo" id="accNo" required="required" />
+            <input type="text" name="accNo" id="accNo" required>
         </div>
 
           <div class="input-group">
             <label for="amount">Amount</label>
-            <input type="number" name="amount" id="amount" required="required"/>
+            <input type="number" name="amount" id="amount" required/>
           </div>
 
           <div class="input-group">
             <label for="method">Select an option:</label>
             <select id="method" name="method">
-              
               <option value="cash">Cash</option>
               <option value="card">Card</option>
             </select>
@@ -105,11 +102,11 @@
           </div>
         </div>
 
-        <!--step 3 - Mobile bill payments - cash-->
+        <!--step 3  cash-->
         <div class="form-step step-3">
           <div class="input-group">
             <label>
-              <input type="checkbox" name="cashCollected" value="cashCollected" required="required"> Cash Collected
+              <input type="checkbox" name="cashCollected" value="cashCollected"> Cash Collected
             </label>
           </div>
 
@@ -119,26 +116,8 @@
           </div>
         </div>
 
-        <!--step 5 - Mobile bill payments - card-->
-        <div class="form-step step-5">
-          <div class="input-group">
-            <label for="refNo">refNo</label>
-            <input type="text" name="refNo" id="refNo" required="required"/>
-          </div>
-
-          <div class="btns-group">
-            <a href="#" class="btn btn-prev" id="step5-prev-btn">Previous</a>
-            <a href="#" class="btn btn-next" id="step5-next-btn">Next</a>
-            <!--<input type="submit" value="submit" class="btn btn-next" id="step5-next-btn">-->
-
-          </div>
-        </div>
-
         <!--step 4 - payment receipt-->
         <div class="form-step step-4">
-          <div class="input-group">
-            <h2>✔Payment Successful</h2>
-          </div>
 
           <div class="input-group">
             <label for="email">email</label>
@@ -146,8 +125,20 @@
           </div>
 
           <div class="btns-group">
-            <a href="#" class="btn download" id="download">Download</a>
-            <input type="submit" value="Submit" class="btn" id="myForm"/>
+            <input type="submit" value="Submit" class="btn" id="myForm" />
+          </div>
+        </div>
+
+        <!--step 5 - card-->
+        <div class="form-step step-5">
+          <div class="input-group">
+            <label for="refNo">refNo</label>
+            <input type="text" name="refNo" id="refNo" />
+          </div>
+
+          <div class="btns-group">
+            <a href="#" class="btn btn-prev" id="step5-prev-btn">Previous</a>
+            <a href="#" class="btn btn-next" id="step5-next-btn">Next</a>
           </div>
         </div>
 
@@ -161,18 +152,21 @@
 
           function selectCard(card) {
           // Remove the 'selected' class from all cards
-          var cards = document.getElementsByClassName('card');
-          for (var i = 0; i < cards.length; i++) {
+          const cards = document.getElementsByClassName('card');
+          const name = document.getElementById('name');
+
+          for (let i = 0; i < cards.length; i++) {
             cards[i].classList.remove('selected');
           }
 
           // Add the 'selected' class to the clicked card
           card.classList.add('selected');
+          name.value = card.getAttribute("data-name");
         }
       </script>
-
     <script>
         window.onload = function() {
+
             // Define variables for each step
         const step1 = document.querySelector('.step-1');
         const step2 = document.querySelector('.step-2');
@@ -188,7 +182,6 @@
         const step5NextBtn = document.getElementById('step5-next-btn');
 
         // Hide all steps except the first one
-        
         step2.style.display = "block";
         step3.style.display = "none";
         step4.style.display = "none";
@@ -257,9 +250,7 @@
         });
         };
         
+
     </script>
-
-
-    
 </body>
 </html>

@@ -39,7 +39,7 @@
                               <center>
                               <img src = "../admin/assets/<?php echo $row['img'];?>" class="card-img">
                                 <div class="card-content">
-                                  <a href="utility.php" style="text-decoration:none"><h2><?php echo $row['name']; ?></h2>
+                                  <a onclick="selectCard(this)" data-name="<?php echo $row['name']?>" href="checkout.php" style="text-decoration:none"><h2><?php echo $row['name']; ?></h2>
                                        
                                   <?php echo $row['description']; ?></a>
                                 </div>
@@ -57,9 +57,26 @@
                       }
 
                     ?>
-         
-                
-        
+                    
+                    <input id="name" type="hidden" name="name">
+
         </div>
+        <script>
+          var selectedCards = [];
+
+          function selectCard(card) {
+          // Remove the 'selected' class from all cards
+          const cards = document.getElementsByClassName('card');
+          const name = document.getElementById('name');
+
+          for (let i = 0; i < cards.length; i++) {
+            cards[i].classList.remove('selected');
+          }
+
+          // Add the 'selected' class to the clicked card
+          card.classList.add('selected');
+          name.value = card.getAttribute("data-name");
+        }
+      </script>
 </body>
 </html>

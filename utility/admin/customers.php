@@ -1,6 +1,5 @@
 <?php
-    require_once('../config/db.php');
-    require_once('../lib/pdo_db.php');
+    require_once('../lib/db.php');
     require_once('Customer.php');
 
     //Instantiate customer
@@ -34,7 +33,8 @@
             <thead style="background-color: red; color:white">
                 <tr>
                     <th>Customer ID</th>
-                    <th>Name</th>
+                    <th>Account Number</th>
+                    <th>Full Name</th>
                     <th>Email</th>
                     <th>Amount</th>
                     <th>Date</th>
@@ -43,11 +43,13 @@
             <tbody>
                 <?php foreach($customers as $c): ?>
                     <tr>
-                        <td><?php echo $c->id; ?></td>
-                        <td><?php echo $c->name; ?></td>
-                        <td><?php echo $c->email; ?></td>
-                        <td><?php echo $c->amount; ?></td>
-                        <td><?php echo $c->created_at; ?></td>
+                    <td><?php echo $c['id']; ?></td>
+                    <td><?php echo $c['name']; ?></td>
+                    <td><?php echo $c['accNo']; ?></td>
+                    <td><?php echo $c['fname']; ?></td>
+                    <td><?php echo $c['email']; ?></td>
+                    <td><?php echo $c['amount']; ?></td>
+                    <td><?php echo isset($c['created_at']) ? $c['created_at'] : ''; ?></td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>

@@ -11,7 +11,7 @@
 <body>
     <div class="container">
         <h2 class="my-4 text-center">Vehicle Fine Payments</h2>
-            <form action="./charge.php" method="post" id="payment-form">
+            <form action="charge.php" method="post" id="payment-form">
                 <div class="form-row">
                     
                     <fieldset class="sec1" data-category="fine">
@@ -37,9 +37,6 @@
 
                     <!--used to display form error--> 
                     <div id="card-errors" role="alert"></div>
-
-                  
-
 
                 </div>
                 <br>

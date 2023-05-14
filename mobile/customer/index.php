@@ -2,7 +2,7 @@
     require('../../index.php');
     require_once('../admin/insert.php');
 
-    $query = "select * from utilitybills";
+    $query = "select * from mobile";
     $run = mysqli_query($conn, $query);
 ?>
 
@@ -39,7 +39,7 @@
                               <center>
                                 <div class="card-content">
                                   <img src = "../admin/assets/<?php echo $row['img'];?>" class="card-img">
-                                  <a href="utility.php" style="text-decoration:none"><h2><?php echo $row['name']; ?></h2>    
+                                  <a onclick="selectCard(this)" data-name="<?php echo $row['name']?>" href="checkout.php" style="text-decoration:none"><h2><?php echo $row['name']; ?></h2>    
                                   <?php echo $row['description']; ?></a>
                                 </div>
                               </center>
@@ -56,9 +56,24 @@
                       }
 
                     ?>
-         
-                
-        
+                    <input id="name" type="hidden" name="name">
         </div>
+        <script>
+          var selectedCards = [];
+
+          function selectCard(card) {
+          // Remove the 'selected' class from all cards
+          const cards = document.getElementsByClassName('card');
+          const name = document.getElementById('name');
+
+          for (let i = 0; i < cards.length; i++) {
+            cards[i].classList.remove('selected');
+          }
+
+          // Add the 'selected' class to the clicked card
+          card.classList.add('selected');
+          name.value = card.getAttribute("data-name");
+        }
+      </script>
 </body>
 </html>

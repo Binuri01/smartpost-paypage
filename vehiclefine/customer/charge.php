@@ -1,7 +1,6 @@
 <?php 
     require_once('vendor/autoload.php');
-    require_once('../config/db.php');
-    require_once('../lib/pdo_db.php');
+    require_once('../lib/db.php');
     require_once('../admin/Customer.php');
     require_once('../admin/Transaction.php');
 
@@ -10,6 +9,12 @@
     //Sanitize POST array
     $POST = filter_var_array($_POST, FILTER_SANITIZE_STRING);
 
+    $vehicleNo =  $POST['vehicleNo'];
+    $address =  $POST['address'];
+    $date =  $POST['date'];
+    $DLNo =  $POST['DLNo'];
+    $PStation =  $POST['PStation'];
+    $NIC =  $POST['NIC'];
     $name =  $POST['name'];
     $email = $POST['email'];
     $amount = $POST['amount'];
@@ -33,9 +38,14 @@
     //Customer data
     $customerData = [ 
         'id' => $charge->customer,
+        'vehicleNo' => $vehicleNo,
+        'address' => $address,
+        'date' => $date, 
+        'DLNo' => $DLNo,
+        'PStation' => $PStation,
+        'NIC' => $NIC,
         'name' => $name,
         'email' => $email,
-        'NIC' => $NIC,
         'amount' => $amount
     ];
 

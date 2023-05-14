@@ -5,7 +5,6 @@
 
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,15 +32,6 @@
         <!-- Steps -->
         <!--step 1 - Exam fee Payments-->
         <div class="form-step form-step-active" id="step-1">
-          <!--<div class="input-group">
-            <label for="username">Username</label>
-            <input type="text" name="username" id="username" />
-          </div>
-          <div class="input-group">
-            <label for="position">Position</label>
-            <input type="text" name="position" id="position" />
-          </div>-->
-          
 
           <?php
           $query = "select * from exams WHERE status = 1";
@@ -55,14 +45,14 @@
                     echo '<div class="row">';
                 }
                 ?>
-                  <div class="card" onclick="selectCard(this)">
+                  <div class="card" onclick="selectCard(this)" data-ename="<?php echo $row['ename']?>">
                     <center>
                       <div class="card-content">
-                        <!--<a href="utility.php" style="text-decoration:none"><h2><?php echo $row['name']; ?></h2>-->
-                        <h2 style="font-size:10px"><?php echo $row['ename']; ?></h2>
-                        <h3 style="font-size:8px">Deadline:<h3 style="color:red;"><?php echo $row['duration']; ?></h3>
-                        <h3 style="font-size:8px">Rs. <?php echo $row['amount']; ?></h3></a>     
-
+                      <h2 style="font-size:10px"><?php echo $row['ename']; ?></h2>
+                      <h3 style="font-size:6px">Deadline:<h3 style="color:red; font-size:7px"><?php echo $row['duration']; ?></h3>
+                      <h4 style="font-size:10px">Rs. <?php echo $row['amount']; ?></h4></a>     
+                        
+                      <h2 hidden><?php echo $row['ename']; ?></h2>
                       </div>
                     </center>
                   </div>
@@ -81,30 +71,29 @@
             }
         ?>
 
-
+        <input id="ename" type="hidden" name="ename">
         <div class="">
             <a href="#" class="btn btn-next width-50 ml-auto" id="step1-next-btn">Next</a>
           </div>
         </div>
 
 
-        <!--step 2 - Mobile bill payments-->
+        <!--step 2 - Exam fee payments-->
         <div class="form-step step-2" id="step-2">
          
         <div class="input-group">
             <label for="NIC">NIC</label>
-            <input type="NIC" name="NIC" id="NIC" />
+            <input type="text" name="NIC" id="NIC" required>
         </div>
 
           <div class="input-group">
             <label for="amount">Amount</label>
-            <input type="number" name="amount" id="amount" />
+            <input type="number" name="amount" id="amount" required/>
           </div>
 
           <div class="input-group">
             <label for="method">Select an option:</label>
             <select id="method" name="method">
-              
               <option value="cash">Cash</option>
               <option value="card">Card</option>
             </select>
@@ -116,7 +105,7 @@
           </div>
         </div>
 
-        <!--step 3 - Mobile bill payments - cash-->
+        <!--step 3  cash-->
         <div class="form-step step-3">
           <div class="input-group">
             <label>
@@ -132,9 +121,6 @@
 
         <!--step 4 - payment receipt-->
         <div class="form-step step-4">
-          <div class="input-group">
-            <h2>✔Payment Successful</h2>
-          </div>
 
           <div class="input-group">
             <label for="email">email</label>
@@ -142,12 +128,11 @@
           </div>
 
           <div class="btns-group">
-            <a href="#" class="btn download" id="download">Download</a>
-            <input type="submit" value="Send" class="btn" id="myForm" />
+            <input type="submit" value="Submit" class="btn" id="myForm" />
           </div>
         </div>
 
-        <!--step 5 - Mobile bill payments - card-->
+        <!--step 5 - card-->
         <div class="form-step step-5">
           <div class="input-group">
             <label for="refNo">refNo</label>
@@ -165,8 +150,26 @@
 
 
       <script src="script.js" defer></script>
+      <script>
+          var selectedCards = [];
+
+          function selectCard(card) {
+          // Remove the 'selected' class from all cards
+          const cards = document.getElementsByClassName('card');
+          const ename = document.getElementById('ename');
+
+          for (let i = 0; i < cards.length; i++) {
+            cards[i].classList.remove('selected');
+          }
+
+          // Add the 'selected' class to the clicked card
+          card.classList.add('selected');
+          ename.value = card.getAttribute("data-ename");
+        }
+      </script>
     <script>
         window.onload = function() {
+
             // Define variables for each step
         const step1 = document.querySelector('.step-1');
         const step2 = document.querySelector('.step-2');

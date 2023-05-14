@@ -1,7 +1,6 @@
 <?php 
     require_once('vendor/autoload.php');
-    require_once('../config/db.php');
-    require_once('../lib/pdo_db.php');
+    require_once('../lib/db.php');
     require_once('../admin/Customer.php');
     require_once('../admin/Transaction.php');
 
@@ -10,7 +9,9 @@
     //Sanitize POST array
     $POST = filter_var_array($_POST, FILTER_SANITIZE_STRING);
 
-    $name =  $POST['name'];
+    //$name =  $POST['name'];
+    $accNo = $POST['accNo'];
+    $fname =  $POST['fname'];
     $email = $POST['email'];
     $amount = $POST['amount'];
     $token = $POST['stripeToken'];
@@ -33,7 +34,9 @@
     //Customer data
     $customerData = [ 
         'id' => $charge->customer,
-        'name' => $name,
+        //'name' => $name,
+        'accNo' => $accNo,
+        'fname' => $fname,
         'email' => $email,
         'amount' => $amount
     ];
@@ -50,8 +53,8 @@
         'id' => str_pad(mt_rand(0, 99999), 5, '0', STR_PAD_LEFT),
         'customer_id' => str_pad(mt_rand(0, 99999), 5, '0', STR_PAD_LEFT),
         'product' => $charge->description,
-        'amount' => $charge->amount,
-        'currency' => $charge->currency,
+        //'amount' => $charge->amount,
+        //'currency' => $charge->currency,
         'status'=> $charge->status,
     ];
 

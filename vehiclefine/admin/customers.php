@@ -34,6 +34,12 @@
             <thead style="background-color:red; color:white">
                 <tr>
                     <th>Customer ID</th>
+                    <th>Vehicle Number</th>
+                    <th>Address</th>
+                    <th>date</th>
+                    <th>DLNo</th>
+                    <th>PStation</th>
+                    <th>NIC</th>
                     <th>Name</th>
                     <th>Email</th>
                     <th>Amount</th>
@@ -43,11 +49,18 @@
             <tbody>
                 <?php foreach($customers as $c): ?>
                     <tr>
-                        <td><?php echo $c->id; ?></td>
-                        <td><?php echo $c->name; ?></td>
-                        <td><?php echo $c->email; ?></td>
-                        <td><?php echo $c->amount; ?></td>
-                        <td><?php echo $c->created_at; ?></td>
+                    <td><?php echo $c['id']; ?></td>
+                    <td><?php echo $c['vehicleNo']; ?></td>
+                    <td><?php echo $c['address']; ?></td>
+                    <td><?php echo $c['date']; ?></td>
+                    <td><?php echo $c['DLNo']; ?></td>
+                    <td><?php echo $c['PStation']; ?></td>
+                    <td><?php echo $c['NIC']; ?></td>
+                    <td><?php echo $c['name']; ?></td>
+                    <td><?php echo $c['email']; ?></td>
+                    <td><?php echo $c['amount']; ?></td>
+                    <td><?php echo isset($c['created_at']) ? $c['created_at'] : ''; ?></td>
+
                     </tr>
                 <?php endforeach; ?>
             </tbody>

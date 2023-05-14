@@ -22,14 +22,6 @@
         <div class= "transactions">
             <h2 class="header"><center>Available Exams</center></h2>
             <div id="progress">
-                <!--<div id="progress-bar" style="max-width: 60%;"></div>
-                    <ul id="progress-num">
-                        <li class="step active">1</li>
-                        <li class="step">2</li>
-                        <li class="step">3</li>
-                    </ul>
-                </div>->
-                <!--<button id="progress-prev" class="prev" disabled>Back</button>-->
                 
                     <?php
                     require_once('../admin/insert.php');
@@ -46,7 +38,7 @@
                                 <div class="row"> 
                                     <div class="content-card" data-step="<?php echo $cardIndex; ?>">
                                         <center><div class="card-content">
-                                            <a href="checkout.php" style="text-decoration:none"><h2><?php echo $row['ename']; ?></h2>
+                                            <a onclick="selectCard(this)" data-name="<?php echo $row['ename']?>" href="checkout.php" style="text-decoration:none"><h2><?php echo $row['ename']; ?></h2>
                                             Deadline:<h3 style="color:red;"><?php echo $row['duration']; ?></h3>
                                             <h2>Rs. <?php echo $row['amount']; ?></h2></a>
                                         </div></center>
@@ -63,11 +55,26 @@
                     else{
                         echo "No Data Found";
                     }
-
                     ?>
-
-            
-        </div>
+                <input id="name" type="hidden" name="name">
+             </div>
         
+             <script>
+          var selectedCards = [];
+
+          function selectCard(card) {
+          // Remove the 'selected' class from all cards
+          const cards = document.getElementsByClassName('card');
+          const ename = document.getElementById('ename');
+
+          for (let i = 0; i < cards.length; i++) {
+            cards[i].classList.remove('selected');
+          }
+
+          // Add the 'selected' class to the clicked card
+          card.classList.add('selected');
+          ename.value = card.getAttribute("data-name");
+        }
+      </script>
 </body>
 </html>
